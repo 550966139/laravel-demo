@@ -11,7 +11,7 @@ class TestCronJob extends CronJob
     // --- 重载对应的方法来返回配置：开始
     public function interval()
     {
-        return 1000;// 每1秒运行一次
+        return 1;// 每1秒运行一次
     }
     public function isImmediate()
     {
