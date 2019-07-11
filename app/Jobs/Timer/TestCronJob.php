@@ -26,7 +26,6 @@ class TestCronJob extends CronJob
         // Coroutine::sleep(1); // Swoole>=2.1 run()方法已自动创建了协程。
         $this->i++;
         // \Log::info(__METHOD__, ['end', $this->i, microtime(true)]);
-        dump($this->i);
         // if ($this->i >= 10) { // 运行10次后不再执行
         //     \Log::info(__METHOD__, ['stop', $this->i, microtime(true)]);
         //     $this->stop(); // 终止此任务
