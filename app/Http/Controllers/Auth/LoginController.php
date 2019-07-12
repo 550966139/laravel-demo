@@ -36,28 +36,25 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        $this->config = [
+            'app_id' => config('easywechat.app_id'),
+            'secret' => config('easywechat.secret'),
+            'token' => config('easywechat.token'),
+            'aes_key' => config('easywechat.aes_key'),   
+            'response_type' => config('easywechat.response_type'),
+        ];
+        $this->app = Factory::officialAccount($this->config);
         $this->middleware('guest')->except('logout');
     }
 
     public function init_weChat()
     {
-        dd(1111);
+        dd($this->app);
     }
 
     public function connect_weChat_servsr()
-    {
-        $config = [
-            'app_id' => 'wx098ce30da094992a',
-            'secret' => '636e257304a8c4fadb5d4c109dc82f58',
-            'token' => 'wenshikun1992',
-            'aes_key' => 'Yb04uU35BWfov2lIkhryngo5DLfg6MaFXxIugCroUO3',   
-            'response_type' => 'array',
-            //...
-        ];
-        
-        $app = Factory::officialAccount($config);
-        
-        $app->server->push(function ($message) {
+    {   
+        $this->app->server->push(function ($message) {
             return "您好！欢迎使用EasyWeChat!";
         });
         
@@ -65,5 +62,11 @@ class LoginController extends Controller
         
         // 将响应输出
         return $response;
+    }
+
+    public function get_menu()
+    {
+        $list = $this->app->menu->list();
+        dd($list);
     }
 }
