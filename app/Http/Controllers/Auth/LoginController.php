@@ -57,11 +57,12 @@ class LoginController extends Controller
         $app = Factory::officialAccount($config);
         
         $app->server->push(function ($message) {
-            return "您好！欢迎使用 EasyWeChat!";
+            return "您好！欢迎使用EasyWeChat!";
         });
         
         $response = $app->server->serve();
-
+        
+        // 将响应输出
         return $response;
     }
 }
