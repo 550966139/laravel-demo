@@ -81,6 +81,7 @@ class LoginController extends Controller
 
     public function create_menu()
     {
+        $app = Factory::officialAccount($this->config);
         $buttons = [
             [
                 "type" => "click",
