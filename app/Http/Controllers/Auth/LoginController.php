@@ -68,7 +68,6 @@ class LoginController extends Controller
     public function get_menu()
     {
         $app = Factory::officialAccount($this->config);
-	dd($app);
         $list = $app->menu->list();
         dd($list);
     }
