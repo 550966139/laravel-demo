@@ -74,6 +74,7 @@ class LoginController extends Controller
     //获取微信菜单
     public function get_menu()
     {
+        $app = Factory::officialAccount($this->config);
         $current = $app->menu->current();
         dd($current);
     }
