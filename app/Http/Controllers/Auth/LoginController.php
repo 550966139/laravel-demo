@@ -50,6 +50,7 @@ class LoginController extends Controller
             'app_id' => 'wx098ce30da094992a',
             'secret' => '636e257304a8c4fadb5d4c109dc82f58',
             'token' => 'wenshikun1992',
+            'aes_key' => 'Yb04uU35BWfov2lIkhryngo5DLfg6MaFXxIugCroUO3',   
             'response_type' => 'array',
             //...
         ];
