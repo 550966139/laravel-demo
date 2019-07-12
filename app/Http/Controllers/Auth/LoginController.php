@@ -68,6 +68,6 @@ class LoginController extends Controller
     public function get_menu()
     {
         $app = Factory::officialAccount($this->config);
-        $app->broadcasting->sendText("大家好！欢迎使用 EasyWeChat。");
+        dd($app->broadcasting->sendText("大家好！欢迎使用 EasyWeChat。"));
     }
 }
