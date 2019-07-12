@@ -28,6 +28,7 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = '/home';
+    protected $app;
 
     /**
      * Create a new controller instance.
@@ -40,10 +41,9 @@ class LoginController extends Controller
             'app_id' => config('easywechat.app_id'),
             'secret' => config('easywechat.secret'),
             'token' => config('easywechat.token'),
-            'aes_key' => config('easywechat.aes_key'),   
+            'aes_key' => config('easywechat.aes_key'),
             'response_type' => config('easywechat.response_type'),
         ];
-        $this->app = Factory::officialAccount($this->config);
         $this->middleware('guest')->except('logout');
     }
 
@@ -53,8 +53,9 @@ class LoginController extends Controller
     }
 
     public function connect_weChat_servsr()
-    {   
-        $this->app->server->push(function ($message) {
+    {
+        $app = Factory::officialAccount($this->config);
+        $app->server->push(function ($message) {
             return "您好！欢迎使用EasyWeChat!";
         });
         
@@ -66,7 +67,8 @@ class LoginController extends Controller
 
     public function get_menu()
     {
-        $list = $this->app->menu->list();
+        $app = Factory::officialAccount($this->config);
+        $list = $app->menu->list();
         dd($list);
     }
 }
