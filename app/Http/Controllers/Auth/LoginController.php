@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+use EasyWeChat\Factory;
+
 class LoginController extends Controller
 {
     /*
@@ -35,5 +37,27 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function init_weChat()
+    {
+        dd(1111);
+    }
+
+    public function connect_weChat_servsr()
+    {
+        $config = [
+            'app_id' => 'wx098ce30da094992a',
+            'secret' => '636e257304a8c4fadb5d4c109dc82f58',
+            'token' => 'wenshikun1992',
+            'response_type' => 'array',
+            //...
+        ];
+        
+        $app = Factory::officialAccount($config);
+
+        $response = $app->server->serve();
+        
+        return $response;
     }
 }

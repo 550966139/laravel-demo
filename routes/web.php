@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['namespace'=>'Auth'],function(){
+    Route::get('weChat','LoginController@init_weChat');
+    Route::get('connect_weChat_servsr','LoginController@connect_weChat_servsr');
+});
