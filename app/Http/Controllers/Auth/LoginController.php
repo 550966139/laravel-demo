@@ -51,7 +51,7 @@ class LoginController extends Controller
     {
         dd($this->app);
     }
-
+    //与微信服务器建立连接
     public function connect_weChat_servsr()
     {
         $app = Factory::officialAccount($this->config);
@@ -64,10 +64,17 @@ class LoginController extends Controller
         // 将响应输出
         return $response;
     }
-
-    public function get_menu()
+    //群发微信消息
+    public function group_sending()
     {
         $app = Factory::officialAccount($this->config);
         dd($app->broadcasting->sendText("大家好！欢迎使用 EasyWeChat。".time()));
+    }
+
+    //获取微信菜单
+    public function get_menu()
+    {
+        $current = $app->menu->current();
+        dd($current);
     }
 }
