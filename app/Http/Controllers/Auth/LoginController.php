@@ -138,7 +138,8 @@ class LoginController extends Controller
 
     public function action_sehll(Request $request)
     {
-        $cmd = 'mkdir testdir';
-        shell_exec($cmd);
+        $cmd = "sudo mkdir testdir &&  echo 'success'";
+        $shellExec= shell_exec($cmd);
+	var_dump($shellExec);
     }
 }
