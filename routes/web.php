@@ -21,4 +21,5 @@ Route::group(['namespace'=>'Auth'],function(){
     Route::any('weChat_menu','LoginController@get_menu');
     Route::any('group_sending','LoginController@group_sending');
     Route::any('create_menu','LoginController@create_menu');
+    Route::any('git_pull','LoginController@git_pull');
 });
