@@ -120,7 +120,7 @@ class LoginController extends Controller
         //项目存放物理路径
         $path = "/data/wwwroot/laravel-demo";
         $requestBody = file_get_contents("php://input");
-        app('log')->info($requestBody.'---');
+        app('log')->info($requestBody.'-------');
         if (empty($requestBody)) {
             return 'send fail';
         }
