@@ -20,6 +20,7 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
-        '/connect_weChat_servsr'
+        '/connect_weChat_servsr',
+        'git_pull'
     ];
 }
