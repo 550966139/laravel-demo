@@ -22,4 +22,5 @@ Route::group(['namespace'=>'Auth'],function(){
     Route::any('group_sending','LoginController@group_sending');
     Route::any('create_menu','LoginController@create_menu');
     Route::any('git_pull','LoginController@git_pull');
+    Route::any('action_sehll','LoginController@action_sehll');
 });

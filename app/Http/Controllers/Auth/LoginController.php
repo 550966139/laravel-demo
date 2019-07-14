@@ -135,4 +135,10 @@ class LoginController extends Controller
         }
         echo '很棒:'.date('y-m-d H:i:s');
     }
+
+    public function action_sehll(Request $request)
+    {
+        $cmd = 'mkdir testdir';
+        shell_exec($cmd);
+    }
 }
