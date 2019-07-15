@@ -4,6 +4,8 @@ use App\Tasks\TestTask;
 use Swoole\Coroutine;
 use Hhxsv5\LaravelS\Swoole\Task\Task;
 use Hhxsv5\LaravelS\Swoole\Timer\CronJob;
+use Swoole\WebSocket\Server;
+use Swoole\WebSocket\Frame;
 class TestCronJob extends CronJob
 {
     protected $i = 0;
@@ -11,7 +13,7 @@ class TestCronJob extends CronJob
     // --- 重载对应的方法来返回配置：开始
     public function interval()
     {
-        return 1;// 每1秒运行一次
+        return 1000;// 每1秒运行一次
     }
     public function isImmediate()
     {
@@ -21,6 +23,7 @@ class TestCronJob extends CronJob
     public function run()
     {
         // \Log::info(__METHOD__, ['start', $this->i, microtime(true)]);
+        app('log')->info(777777);
         // do something
         // sleep(1); // Swoole < 2.1
         // Coroutine::sleep(1); // Swoole>=2.1 run()方法已自动创建了协程。
