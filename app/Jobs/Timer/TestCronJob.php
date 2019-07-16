@@ -9,6 +9,7 @@ use Swoole\WebSocket\Frame;
 use App\Models\RedEnvelopes;
 class TestCronJob extends CronJob
 {
+    use RedEnvelopes;
     protected $i = 0;
     // !!! 定时任务的`interval`和`isImmediate`有两种配置方式（二选一）：一是重载对应的方法，二是注册定时任务时传入参数。
     // --- 重载对应的方法来返回配置：开始
@@ -28,7 +29,7 @@ class TestCronJob extends CronJob
         $bonus_count=rand(3,7);
         $bonus_max=$bonus_total/$bonus_count+rand(1,7);
         $bonus_min=0.01;
-        $returnArr = RedEnvelopes::getBonus($bonus_total, $bonus_count, $bonus_max, $bonus_min);
+        $returnArr = $this->getBonus($bonus_total, $bonus_count, $bonus_max, $bonus_min);
         app('log')->info(json_encode($returnArr));
         // do something
         // sleep(1); // Swoole < 2.1
