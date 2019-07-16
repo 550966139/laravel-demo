@@ -29,7 +29,7 @@ class TestCronJob extends CronJob
         $bonus_max=$bonus_total/$bonus_count+rand(1,7);
         $bonus_min=0.01;
         $returnArr = RedEnvelopes::getBonus($bonus_total, $bonus_count, $bonus_max, $bonus_min);
-        app('log')->info(json_encode($returnArr));
+        app('log')->info(RedEnvelopes::createOnlyId());
         // do something
         // sleep(1); // Swoole < 2.1
         // Coroutine::sleep(1); // Swoole>=2.1 run()方法已自动创建了协程。
